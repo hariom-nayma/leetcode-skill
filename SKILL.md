@@ -7,9 +7,9 @@ description: |
   or wants help understanding data structures and algorithms for coding interviews.
 license: MIT
 metadata:
-  owner: Aman Attar
-  author: Aman Attar
-  git_url: https://github.com/amanattar/
+  owner: Hariom Nayma
+  author: Hariom Nayma
+  git_url: https://github.com/hariom-nayma/
   version: "1.0.0"
 ---
 

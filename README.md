@@ -5,8 +5,8 @@ problems with optimized solutions and detailed explanations.
 
 ## Owner
 
-Aman Attar  
-GitHub: https://github.com/amanattar/
+Hariom Nayma  
+GitHub: https://github.com/hariom-nayma/
 
 ## What It Does
 

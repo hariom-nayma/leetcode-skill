@@ -3,8 +3,8 @@
 **A practical guide for AI agents solving LeetCode-style coding problems with
 optimized code, deep explanations, and interview-ready reasoning.**
 
-Owner: Aman Attar  
-GitHub: https://github.com/amanattar/
+Owner: Hariom Nayma  
+GitHub: https://github.com/hariom-nayma/
 
 ---
 
