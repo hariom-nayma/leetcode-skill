@@ -187,6 +187,31 @@ Be specific about what `n`, `m`, or other variables mean.
 
 ---
 
+## Pattern Recognition & Mastery
+
+### Pattern Recognition Clues
+
+**Impact: HIGH** | **Category: explanation** | **Tags:** intuition, patterns, mastery
+
+Help the user identify the pattern for themselves in the future.
+
+- **Look for keywords**: "Contiguous" (Sliding Window), "Shortest path" (BFS), "Duplicates" (Hash set).
+- **Check constraints**: `n <= 10^5` usually means `O(n log n)` or `O(n)`, while `n <= 20` might mean backtracking.
+- **Identify properties**: Does order matter? Is there an optimal substructure?
+
+### Comparative Analysis (Brute Force)
+
+Always briefly mention the brute-force approach first. This sets the stage for *why* the optimized solution is impressive and necessary.
+
+#### Example
+```markdown
+## Comparative Analysis
+- **Brute Force**: Check every pair `(i, j)`, which takes `O(n^2)`.
+- **Optimized**: Use a hash map to find the complement in `O(1)`, bringing total time to `O(n)`.
+```
+
+---
+
 ## Explanation
 
 ### Explain the Algorithm
@@ -318,6 +343,27 @@ Avoid names like `x`, `y`, `temp`, and `ans` when a more specific name is helpfu
 
 ---
 
+## Mastering the Pattern
+
+### Common Pitfalls
+Identify common mistakes for this specific pattern or problem:
+- **Off-by-one errors** in binary search or sliding window.
+- **Handling duplicates** in hash map problems.
+- **Integer overflow** when summing large numbers.
+
+### Interview Tips
+Provide 1-2 tips on how to present this solution:
+- "Explain the brute force first, then offer the optimization."
+- "Mention the space-time trade-off clearly."
+- "Verify your edge cases out loud before writing code."
+
+### Similar Problems
+List 2-3 similar problems to reinforce the pattern:
+- [Problem 1 Name]
+- [Problem 2 Name]
+
+---
+
 ## Standard Answer Format
 
 When answering a pasted LeetCode question, use this structure:
@@ -326,8 +372,15 @@ When answering a pasted LeetCode question, use this structure:
 ## Problem Understanding
 [Short explanation of what needs to be solved.]
 
+## Pattern Recognition Clues
+[Why this algorithm? Mention keywords or constraints.]
+
+## Comparative Analysis
+- **Brute Force**: [Complexity and idea]
+- **Optimized**: [Complexity and idea]
+
 ## Approach
-[Optimized idea, with brief mention of brute force if useful.]
+[Detailed optimized idea.]
 
 ## Algorithm
 1. [Step one]
@@ -353,6 +406,16 @@ class Solution {
 
 ## Edge Cases
 - [Edge case and why it works.]
+
+## Common Pitfalls
+- [Avoid these common mistakes.]
+
+## Interview Tips
+- [How to talk about this solution.]
+
+## Similar Problems
+- [Problem 1]
+- [Problem 2]
 ````
 
 If the user asks for only code, provide code first, but still include a brief complexity
@@ -384,15 +447,28 @@ Before finalizing any LeetCode answer, verify:
 We need to return the indices of two numbers in `nums` whose sum equals `target`.
 Each input has one valid answer, and we cannot use the same element twice.
 
+## Pattern Recognition Clues
+
+1. **Target Sum**: We are looking for a pair that sums to a value. This often suggests a **Hash Map** (to find complements) or **Two Pointers** (if the array is sorted).
+2. **Constraints**: Standard array size suggests `O(n)` or `O(n log n)`. A Hash Map allows us to reach `O(n)`.
+
+## Comparative Analysis
+
+- **Brute Force**: Nested loops to check every pair `(i, j)`. 
+  - **Time**: `O(n^2)`
+  - **Space**: `O(1)`
+- **Optimized**: Use a Hash Map to store visited numbers and their indices for instant lookup of the complement (`target - current`).
+  - **Time**: `O(n)`
+  - **Space**: `O(n)`
+
 ## Approach
 
-A brute-force solution checks every pair in `O(n^2)`. We can optimize to `O(n)`
-using a hash map. For each number, we check whether the number needed to complete
-the target has already appeared.
+We use a hash map to remember numbers we have already seen. For each current number,
+check whether its complement is already in the map.
 
 ## Algorithm
 
-1. Create a dictionary called `seen` that maps number to index.
+1. Create a hash map called `seen` that maps number to index.
 2. Loop through `nums`.
 3. For each number, compute `need = target - num`.
 4. If `need` exists in `seen`, return its index and the current index.
@@ -452,6 +528,23 @@ Input: `nums = [2, 7, 11, 15]`, `target = 9`
 - Duplicate numbers: handled because indices are stored separately.
 - Negative numbers: handled because subtraction and dictionary lookup work the same way.
 - Answer near the end: handled because the loop checks every element once.
+
+## Common Pitfalls
+
+- **Using the same element twice**: Ensure you check the map *before* adding the current element to it.
+- **Index vs. Value**: Remember that the map should store the `value -> index` mapping, not the other way around.
+
+## Interview Tips
+
+- **Mention the Trade-off**: Explain that you are trading `O(n)` space for `O(n)` time.
+- **Ask about Sorting**: Ask if the array is sorted; if it were, you could use Two Pointers for `O(1)` space.
+
+## Similar Problems
+
+- [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+- [4Sum](https://leetcode.com/problems/4sum/)
+- [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
+
 
 ---
 

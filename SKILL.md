@@ -48,6 +48,8 @@ Detailed response rules and examples are documented in [AGENTS.md](AGENTS.md).
 When solving a LeetCode problem, include:
 
 - **Problem Understanding**: What the problem asks in plain language.
+- **Pattern Recognition Clues**: Why this pattern was chosen.
+- **Comparative Analysis**: Brute force vs optimized.
 - **Approach**: The optimized idea and why it works.
 - **Algorithm**: Step-by-step method.
 - **Code**: Clean LeetCode-ready code.
@@ -55,6 +57,9 @@ When solving a LeetCode problem, include:
 - **Dry Run**: Walk through an example.
 - **Complexity**: Time and space complexity.
 - **Edge Cases**: Important boundary cases.
+- **Common Pitfalls**: Frequent errors to avoid.
+- **Interview Tips**: Presentation advice.
+- **Similar Problems**: Practice recommendations.
 
 ## Development Process
 
@@ -132,6 +137,13 @@ Use this format for LeetCode answers:
 ## Problem Understanding
 [Explain what the problem asks.]
 
+## Pattern Recognition Clues
+[Why this algorithm?]
+
+## Comparative Analysis
+- **Brute Force**: [Complexity/Idea]
+- **Optimized**: [Complexity/Idea]
+
 ## Approach
 [Explain the optimized idea.]
 
@@ -159,6 +171,15 @@ class Solution {
 
 ## Edge Cases
 - [Case]: [Why it works.]
+
+## Common Pitfalls
+- [Mistakes to avoid.]
+
+## Interview Tips
+- [How to explain it.]
+
+## Similar Problems
+- [Links or names.]
 ````
 
 ## Example
@@ -171,6 +192,16 @@ class Solution {
 
 We need to return the indices of two numbers whose sum equals `target`.
 
+## Pattern Recognition Clues
+
+- **Target Sum**: Finding a pair often involves a Hash Map (for `O(n)`) or Two Pointers (if sorted).
+- **Lookup Requirement**: We need to quickly find if `target - current` exists, making a Hash Map ideal.
+
+## Comparative Analysis
+
+- **Brute Force**: Check every pair with nested loops. Time: `O(n^2)`, Space: `O(1)`.
+- **Optimized**: Store visited numbers in a Hash Map. Time: `O(n)`, Space: `O(n)`.
+
 ## Approach
 
 Use a hash map to remember numbers we have already seen. For each current number,
@@ -178,7 +209,7 @@ check whether its complement is already in the map.
 
 ## Algorithm
 
-1. Create a dictionary `seen`.
+1. Create a hash map `seen`.
 2. Loop through the array with index and value.
 3. Compute `need = target - num`.
 4. If `need` is already stored, return both indices.
@@ -232,10 +263,25 @@ Input: `nums = [2, 7, 11, 15]`, `target = 9`
 ## Complexity
 
 - Time: `O(n)`, because each number is processed once.
-- Space: `O(n)`, because the dictionary can store up to `n` numbers.
+- Space: `O(n)`, because the hash map can store up to `n` numbers.
 
 ## Edge Cases
 
 - Duplicate numbers: works because indices are stored.
 - Negative numbers: works because complements can be negative.
 - Pair appears late: works because the loop checks every number.
+
+## Common Pitfalls
+
+- **Reusing elements**: Don't add the current number to the map *before* checking for the complement.
+- **Index vs Value**: Be careful which one is the key and which is the value in your map.
+
+## Interview Tips
+
+- **Mention Two Pointers**: If the array was sorted, you could achieve `O(1)` space.
+- **Talk about Hashing**: Briefly mention that `HashMap` lookups are `O(1)` on average.
+
+## Similar Problems
+
+- [Contains Duplicate](https://leetcode.com/problems/contains-duplicate/)
+- [Two Sum II - Input Array Is Sorted](https://leetcode.com/problems/two-sum-ii-input-array-is-sorted/)
