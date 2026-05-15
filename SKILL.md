@@ -3,7 +3,7 @@ name: leetcode-helper
 description: |
   Expert LeetCode problem solver for optimized coding interview solutions.
   Use when: the user pastes a LeetCode problem, asks for an optimized algorithm,
-  wants Python LeetCode code, needs a dry run, asks for line-by-line explanation,
+  wants Java LeetCode code, needs a dry run, asks for line-by-line explanation,
   or wants help understanding data structures and algorithms for coding interviews.
 license: MIT
 metadata:
@@ -25,7 +25,7 @@ Use this skill when:
 
 - The user pastes a LeetCode problem statement.
 - The user asks for the best or most optimized solution.
-- The user asks for a Python solution to a coding interview problem.
+- The user asks for a Java solution to a coding interview problem.
 - The user wants the algorithm explained.
 - The user wants every line of code explained.
 - The user wants a dry run with an example.
@@ -88,13 +88,15 @@ Select the most suitable algorithmic pattern:
 
 ### 3. Write Accepted-Style Code (HIGH)
 
-Use the exact LeetCode method signature when provided. Prefer Python unless the
+Use the exact LeetCode method signature when provided. Prefer Java unless the
 user requests another language.
 
-```python
-class Solution:
-    def methodName(self, nums: list[int]) -> int:
+```java
+class Solution {
+    public int methodName(int[] nums) {
         ...
+    }
+}
 ```
 
 Do not include stdin/stdout parsing unless requested.
@@ -139,9 +141,10 @@ Use this format for LeetCode answers:
 3. [Step three]
 
 ## Code
-```python
-class Solution:
+```java
+class Solution {
     ...
+}
 ```
 
 ## Line-by-Line Explanation
@@ -183,31 +186,39 @@ check whether its complement is already in the map.
 
 ## Code
 
-```python
-class Solution:
-    def twoSum(self, nums: list[int], target: int) -> list[int]:
-        seen: dict[int, int] = {}
+```java
+import java.util.*;
 
-        for i, num in enumerate(nums):
-            need = target - num
-            if need in seen:
-                return [seen[need], i]
-            seen[num] = i
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        Map<Integer, Integer> seen = new HashMap<>();
 
-        return []
+        for (int i = 0; i < nums.length; i++) {
+            int num = nums[i];
+            int need = target - num;
+            if (seen.containsKey(need)) {
+                return new int[] { seen.get(need), i };
+            }
+            seen.put(num, i);
+        }
+
+        return new int[] {};
+    }
+}
 ```
 
 ## Line-by-Line Explanation
 
-- `class Solution:`: Defines the class LeetCode uses to run the solution.
-- `def twoSum(...)`: Defines the required method.
-- `seen: dict[int, int] = {}`: Creates a dictionary from number to index.
-- `for i, num in enumerate(nums):`: Visits each number with its index.
-- `need = target - num`: Finds the complement needed for the target.
-- `if need in seen:`: Checks whether the complement appeared earlier.
-- `return [seen[need], i]`: Returns the two valid indices.
-- `seen[num] = i`: Stores the current number for future checks.
-- `return []`: Provides a safe fallback if no pair exists.
+- `class Solution {`: Defines the class LeetCode uses to run the solution.
+- `public int[] twoSum(...)`: Defines the required method with return type array of integers.
+- `Map<Integer, Integer> seen = new HashMap<>();`: Creates a map from number to its index.
+- `for (int i = 0; i < nums.length; i++) {`: Visits each number with its index.
+- `int num = nums[i];`: Gets the current number.
+- `int need = target - num;`: Finds the complement needed for the target.
+- `if (seen.containsKey(need)) {`: Checks whether the complement appeared earlier.
+- `return new int[] { seen.get(need), i };`: Returns the two valid indices as an array.
+- `seen.put(num, i);`: Stores the current number and index for future checks.
+- `return new int[] {};`: Provides a safe fallback if no pair exists.
 
 ## Dry Run
 

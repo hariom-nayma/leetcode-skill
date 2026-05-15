@@ -14,7 +14,7 @@ When you paste a LeetCode problem, this skill guides the agent to provide:
 
 - Problem understanding in plain language.
 - An optimized algorithmic approach.
-- Clean LeetCode-ready Python code.
+- Clean LeetCode-ready Java code.
 - Step-by-step algorithm explanation.
 - Line-by-line code explanation.
 - A dry run using an example.
